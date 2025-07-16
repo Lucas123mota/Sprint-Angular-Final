@@ -1,0 +1,97 @@
+<header>
+  <button class="hamburger-btn" (click)="toggleSidebar()">
+    ☰
+  </button>
+
+  <div #sidebarOverlay class="sidebar-overlay" (click)="closeSidebar()"></div>
+
+  <div #sidebar class="sidebar">
+    <div class="px-3 py-3 border-bottom">
+      <strong class="text-dark"><img src="ford.png" alt=""  class="img-ford-ajuste"></strong> 
+    </div>
+    <a routerLink="/dashboard" href="/dashboard" class="menu-item">Dasboard</a>
+    <a routerLink="/home" href="/home" class="menu-item">Home</a>
+    
+
+  </div>
+
+  <h1 class="dashboard-title" style="color: rgb(12,68,134);">Dashboard FORD</h1>
+</header>
+
+<hr>
+
+<main>
+ 
+<div class="dashboard-main">
+
+  <div id="veiculo" class="caixa-dashboard">
+  <h3>Veículo</h3>
+  <hr>
+  <form [formGroup]="selectCarForms"> <select formControlName="carId" style="width: 100%; padding: 8px; border-radius: 5px;">
+   <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+              {{ vehicle.vehicle }}
+            </option>
+  </select></form>
+ 
+</div>
+
+
+  <div id="vendas" class="caixa-dashboard">
+  <h3 style="font-size: 13px;">Total de vendas</h3>
+  <hr>
+  <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.volumetotal }}</h2>
+  <h5>{{ selectedVehicle.volumetotal }} unid.</h5>
+</div>
+
+
+<div id="conectados" class="caixa-dashboard">
+  <h3>Conectados</h3>
+  <hr>
+  <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.connected }}</h2>
+  <h5>{{ selectedVehicle.connected }} unid.</h5>
+</div>
+
+
+<div id="updates" class="caixa-dashboard">
+  <h3 style="font-size: 11px;">Update de software</h3>
+  <hr>
+  <h2 style="color: rgb(42, 42, 231);">{{selectedVehicle.softwareUpdates }}</h2>
+  <h5>{{ selectedVehicle.softwareUpdates }} unid.</h5>
+</div>
+
+</div>
+
+  <img src="{{ selectedVehicle.img }}" alt=" Mustang" style="width: 50%;">
+</main>
+
+
+<footer>
+    <table>
+      <tr>
+         <th class="footer-ajuste"> Código - Vin </th>
+         <th class="footer-ajuste"> Odômetro </th>
+         <th class="footer-ajuste"> Nível de Combustível </th>
+         <th class="footer-ajuste"> Status </th>
+         <th class="footer-ajuste"> Lat. </th>
+         <th class="footer-ajuste"> Long. </th>
+      </tr>
+      <tr>
+        <div class="codigo-tabela"><td class="ajustando_cor_footer" style="border: 1px solid;">9FBRD4KB7RZB47674</td></div>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">50000 Km</td>
+        <td class="ajustando_cor_footer"style="font-weight: bold;">90%</td>
+        <td class="ajustando_cor_footer"style="font-weight: bold;">on</td>
+        <td class="ajustando_cor_footer"style="font-weight: bold;">-12.2222</td>
+        <td class="ajustando_cor_footer"style="font-weight: bold;">-35.2314</td>
+      </tr>
+      <tr>
+        <td class="footer-ajuste2"></td>
+        <td class="footer-ajuste2"></td>
+        <td class="footer-ajuste2"></td>
+        <td class="footer-ajuste2"></td>
+        <td class="footer-ajuste2"></td>
+        <td class="footer-ajuste2"></td>
+        
+      </tr>
+      
+    </table>
+  </footer>

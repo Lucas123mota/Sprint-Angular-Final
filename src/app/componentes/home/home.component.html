@@ -1,0 +1,37 @@
+  
+    <header>
+      <button class="hamburger-btn" (click)="toggleSidebar()">
+        ☰
+      </button>
+    
+      <div #sidebarOverlay class="sidebar-overlay" (click)="closeSidebar()"></div>
+    
+      <div #sidebar class="sidebar">
+        <div class="px-3 py-3 border-bottom">
+          <strong class="text-dark"><img src="ford.png" alt=""  class="img-ford-ajuste"></strong> 
+        </div>
+        <a routerLink="/dashboard" href="/dashboard" class="menu-item">Dasboard</a>
+        <a routerLink="/home" href="/home" class="menu-item">Home</a>
+      </div>
+  
+    </header>
+    
+
+
+
+
+ 
+  <main>
+  
+    <div>  
+      <img src="ranger.png" alt="ranger png">
+    </div>
+
+    <div class="popUp">
+      <h1></h1>
+      <h5 style="margin: 12px; font-style: bold;">Sistemas de dados FORD</h5>
+      <hr>
+      <section class="divSection" style="margin: 10px;">Seja bem-vindo(a)!</section>
+    </div>
+
+  </main>
