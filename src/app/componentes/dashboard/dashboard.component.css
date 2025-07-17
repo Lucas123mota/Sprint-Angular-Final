@@ -148,6 +148,9 @@ body.offcanvas-open {
 
 .sidebar.active {
   transform: translateX(0);
+  border: 1px solid;
+  border-radius: 6px;
+  
 }
 
 .sidebar .menu-item {
@@ -161,7 +164,7 @@ body.offcanvas-open {
 
 .sidebar .menu-item:hover {
   background-color: #f8f9fa;
-  border-left: 2px solid red;
+  border-left: 2px solid rgb(12,68,134);
 }
 
 .hamburger-btn {
@@ -238,5 +241,7 @@ body.offcanvas-open {
   height: 25px;
   background-color: rgb(12,68,134);
 }
+
+
 
 

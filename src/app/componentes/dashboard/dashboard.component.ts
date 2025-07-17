@@ -1,62 +1,87 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Veiculo, VeiculoData } from '../../models/veiculo.model';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
-import { catchError, of } from 'rxjs';
-import { DashboardService } from '../../services/dashboard.service';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Veiculo, VeiculoModel, VeiculoData } from '../models/VeiculoModel';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  standalone: true,
   selector: 'app-dashboard',
-  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+  ]
 })
 export class DashboardComponent implements OnInit {
   vehicles: Veiculo[] = [];
-  selectedVehicle!: Veiculo;
-  vehicleData!: VeiculoData;
-  errorMessage?: string;
+  selectedVehicle: Veiculo & Partial<VeiculoData> = {} as any;
+  vinDigitado: string = '';
+  selectCarForms!: FormGroup;
 
-  selectCarForms = new FormGroup({
-    carId: new FormControl(''),
-  });
+  constructor(private http: HttpClient, private fb: FormBuilder) {}
 
-
-  
-  @ViewChild('sidebar') sidebar!: ElementRef<HTMLDivElement>;
-  @ViewChild('sidebarOverlay') overlay!: ElementRef<HTMLDivElement>;
-
-  constructor(private dashboardService: DashboardService) {}
   ngOnInit(): void {
-    this.dashboardService.getVehicles().subscribe((res) => {
-      this.vehicles = res.vehicles;
-      const firstId = this.vehicles[0]?.id;
-      this.selectCarForms.controls.carId.setValue(firstId.toString());
-      this.selectedVehicle = this.vehicles[0];
+    this.selectCarForms = this.fb.group({
+      carId: ['']
     });
 
-    this.selectCarForms.controls.carId.valueChanges.subscribe((id) => {
-      this.selectedVehicle = this.vehicles[Number(id) - 1];
-      console.log(this.selectedVehicle);
+    this.carregarVeiculos();
+
+    // Quando o usuário muda o select
+    this.selectCarForms.get('carId')?.valueChanges.subscribe((idSelecionado) => {
+      const veiculo = this.vehicles.find(v => v.id == idSelecionado);
+      if (veiculo) {
+        this.selectedVehicle = veiculo;
+      }
     });
   }
 
-
-  toggleSidebar(): void {
-    const sidebarEl = this.sidebar.nativeElement;
-    const overlayEl = this.overlay.nativeElement;
-
-    const isActive = sidebarEl.classList.toggle('active');
-    overlayEl.style.display = isActive ? 'block' : 'none';
-
-    document.body.classList.toggle('offcanvas-open', isActive);
+  carregarVeiculos(): void {
+    this.http.get<{ vehicles: VeiculoModel }>('http://localhost:3001/vehicles')
+      .subscribe({
+        next: (res) => {
+          this.vehicles = res.vehicles;
+          this.selectedVehicle = this.vehicles[0];
+          this.selectCarForms.patchValue({ carId: this.vehicles[0].id });
+        },
+        error: (err) => {
+          console.error('Erro ao carregar veículos:', err);
+          alert('Erro ao carregar veículos!');
+        }
+      });
   }
 
-  closeSidebar(): void {
-    this.sidebar.nativeElement.classList.remove('active');
-    this.overlay.nativeElement.style.display = 'none';
-    document.body.classList.remove('offcanvas-open');
+  buscarVeiculoPorVIN(): void {
+    const vin = this.vinDigitado.trim();
+    if (!vin) return;
+
+    this.http.post<VeiculoData>('http://localhost:3001/vehicleData', { vin })
+      .subscribe({
+        next: (data) => {
+          this.selectedVehicle = {
+            ...this.selectedVehicle,
+            ...data
+          };
+        },
+        error: (err) => {
+          console.error('Erro ao buscar VIN:', err);
+          alert('Código VIN não encontrado!');
+        }
+      });
+  }
+
+  toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar') as HTMLElement;
+    const overlay = document.querySelector('.sidebar-overlay') as HTMLElement;
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+  }
+
+  closeSidebar() {
+    const sidebar = document.querySelector('.sidebar') as HTMLElement;
+    const overlay = document.querySelector('.sidebar-overlay') as HTMLElement;
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
   }
 }

@@ -81,7 +81,7 @@ body.offcanvas-open {
   
   .sidebar .menu-item:hover {
     background-color: #f8f9fa;
-    border-left: 2px solid red;
+    border-left: 2px solid rgb(12,68,134);
   }
   
   .hamburger-btn {
@@ -115,4 +115,8 @@ body.offcanvas-open {
   .px-3.py-3.border-bottom{
     display: flex;
     justify-content: right;
+  }
+  
+  .hamburger-btn{
+    color: rgb(12,68,134);
   }

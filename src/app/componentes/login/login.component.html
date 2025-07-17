@@ -5,10 +5,15 @@
 
 </head>
 <main>
+
+
     <section class="imgSection">
-      <img src="ranger.png" alt="Imagem da Ranger">
+      <app-carrosel></app-carrosel>
     </section>
-  
+
+    <script src="js/carousel.js"></script>
+    
+
     <section class="divisao">
       <header>
         <img src="ford.png" alt="Logo Ford">
@@ -45,7 +50,7 @@
                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                       </div>
                       <div class="input-group">
-                        <input #passwordInput type="password" class="form-control" placeholder="Senha" name="senha" formControlName="senha">
+                        <input #passwordInput type="password" class="form-control" placeholder=" Insira sua senha" name="senha" formControlName="senha">
                       
                         <span class="input-group-text" (click)="togglePassword()" style="cursor: pointer;">
                           <i #showEye class="bi bi-eye" style="display: block;"></i>
@@ -58,11 +63,12 @@
                   <div class="col-6">
                    
                   </div>
-                  <div class="col-sm-12 pt-3 text-right">
-                   
-                  </div>
+                  
                   <div class="col-12">
-                    <button class="btn btn-primary" type="submit" name="signin">Login</button>
+                    <button
+                    #loginBtn
+                    type="submit"(mouseover)="shiftButton()" style="border-radius: 4px; width: 120px; height: 30px; background-color: rgb(12,68,134); color: white;">Entrar</button>
+                  
                   </div>
                 </div>
               </form>

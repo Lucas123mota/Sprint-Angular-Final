@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InitialNavigation, Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { CarouselComponent } from "../carrosel/carrosel.component";
+
 
 
 @Component({
   standalone: true,
   selector: 'app-login',
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule, CarouselComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -44,6 +46,8 @@ onSubmit() {
   @ViewChild('passwordInput') passwordInput!: ElementRef<HTMLInputElement>;
   @ViewChild('showEye') showEye!: ElementRef<HTMLElement>;
   @ViewChild('hideEye') hideEye!: ElementRef<HTMLElement>;
+  @ViewChild('loginBtn') loginBtn!: ElementRef<HTMLButtonElement>;
+
 
   passwordVisible = false;
 
@@ -62,5 +66,47 @@ onSubmit() {
       hideEyeIcon.style.display = 'none';
     }
   }
+
+  positions = ['shift-left', 'shift-top', 'shift-right', 'shift-bottom'];
+
+  shiftButton(): void {
+    const btn = this.loginBtn.nativeElement;
+  
+    const currentPosition = this.positions.find(dir =>
+      btn.classList.contains(dir)
+    );
+  
+    // Se o formulário está válido, remove as posições e aplica a classe de reset
+    if (this.formLogin.valid) {
+      if (currentPosition) {
+        btn.classList.remove(currentPosition);
+      }
+  
+      // Aplica a classe que traz o botão de volta ao centro
+      btn.classList.add('reset-position');
+      return;
+    }
+  
+    // Se o formulário está inválido, remove qualquer reset e move o botão
+    btn.classList.remove('reset-position');
+  
+    if (currentPosition) {
+      btn.classList.remove(currentPosition);
+    }
+  
+    let newPosition;
+    do {
+      newPosition = this.positions[Math.floor(Math.random() * this.positions.length)];
+    } while (newPosition === currentPosition);
+  
+    btn.classList.add(newPosition);
+  }
+  
+  
+  
+
+
+  
+
   
 }

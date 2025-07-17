@@ -1,5 +1,5 @@
 <header>
-  <button class="hamburger-btn" (click)="toggleSidebar()">
+  <button class="hamburger-btn" (click)="toggleSidebar()" style="color: rgb(12,68,134);">
     ☰
   </button>
 
@@ -7,12 +7,12 @@
 
   <div #sidebar class="sidebar">
     <div class="px-3 py-3 border-bottom">
-      <strong class="text-dark"><img src="ford.png" alt=""  class="img-ford-ajuste"></strong> 
+      <strong class="text-dark">
+        <img src="ford.png" alt="" class="img-ford-ajuste">
+      </strong>
     </div>
-    <a routerLink="/dashboard" href="/dashboard" class="menu-item">Dasboard</a>
-    <a routerLink="/home" href="/home" class="menu-item">Home</a>
-    
-
+    <a routerLink="/dashboard" class="menu-item" style="color: rgb(12,68,134);">Dashboard</a>
+    <a routerLink="/home" class="menu-item" style="color: rgb(12,68,134);">Home</a>
   </div>
 
   <h1 class="dashboard-title" style="color: rgb(12,68,134);">Dashboard FORD</h1>
@@ -21,77 +21,74 @@
 <hr>
 
 <main>
- 
-<div class="dashboard-main">
+  <div class="dashboard-main">
+    <div id="veiculo" class="caixa-dashboard">
+      <h3>Veículo</h3>
+      <hr>
+      <form [formGroup]="selectCarForms">
+        <select formControlName="carId" style="width: 100%; padding: 8px; border-radius: 5px;">
+          <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+            {{ vehicle.vehicle }}
+          </option>
+        </select>
+      </form>
+    </div>
 
-  <div id="veiculo" class="caixa-dashboard">
-  <h3>Veículo</h3>
-  <hr>
-  <form [formGroup]="selectCarForms"> <select formControlName="carId" style="width: 100%; padding: 8px; border-radius: 5px;">
-   <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
-              {{ vehicle.vehicle }}
-            </option>
-  </select></form>
- 
-</div>
+    <div id="vendas" class="caixa-dashboard">
+      <h3 style="font-size: 13px;">Total de vendas</h3>
+      <hr>
+      <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.volumetotal }}</h2>
+      <h5>{{ selectedVehicle.volumetotal }} unid.</h5>
+    </div>
 
+    <div id="conectados" class="caixa-dashboard">
+      <h3>Conectados</h3>
+      <hr>
+      <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.connected }}</h2>
+      <h5>{{ selectedVehicle.connected }} unid.</h5>
+    </div>
 
-  <div id="vendas" class="caixa-dashboard">
-  <h3 style="font-size: 13px;">Total de vendas</h3>
-  <hr>
-  <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.volumetotal }}</h2>
-  <h5>{{ selectedVehicle.volumetotal }} unid.</h5>
-</div>
+    <div id="updates" class="caixa-dashboard">
+      <h3 style="font-size: 11px;">Update de software</h3>
+      <hr>
+      <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.softwareUpdates }}</h2>
+      <h5>{{ selectedVehicle.softwareUpdates }} unid.</h5>
+    </div>
+  </div>
 
-
-<div id="conectados" class="caixa-dashboard">
-  <h3>Conectados</h3>
-  <hr>
-  <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.connected }}</h2>
-  <h5>{{ selectedVehicle.connected }} unid.</h5>
-</div>
-
-
-<div id="updates" class="caixa-dashboard">
-  <h3 style="font-size: 11px;">Update de software</h3>
-  <hr>
-  <h2 style="color: rgb(42, 42, 231);">{{selectedVehicle.softwareUpdates }}</h2>
-  <h5>{{ selectedVehicle.softwareUpdates }} unid.</h5>
-</div>
-
-</div>
-
-  <img src="{{ selectedVehicle.img }}" alt=" Mustang" style="width: 50%;">
+  <img [src]="selectedVehicle.img" alt="Imagem do veículo" style="width: 50%;">
 </main>
 
-
 <footer>
-    <table>
+  <table>
+    <thead>
       <tr>
-         <th class="footer-ajuste"> Código - Vin </th>
-         <th class="footer-ajuste"> Odômetro </th>
-         <th class="footer-ajuste"> Nível de Combustível </th>
-         <th class="footer-ajuste"> Status </th>
-         <th class="footer-ajuste"> Lat. </th>
-         <th class="footer-ajuste"> Long. </th>
+        <th class="footer-ajuste">Código - VIN</th>
+        <th class="footer-ajuste">Odômetro</th>
+        <th class="footer-ajuste">Nível de Combustível</th>
+        <th class="footer-ajuste">Status</th>
+        <th class="footer-ajuste">Lat.</th>
+        <th class="footer-ajuste">Long.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="6">
+          <input type="text"
+                 placeholder="Digite o código VIN"
+                 [(ngModel)]="vinDigitado"
+                 (keyup.enter)="buscarVeiculoPorVIN()"
+                 style="width: 100%; padding: 8px; border-radius: 5px;">
+        </td>
       </tr>
       <tr>
-        <div class="codigo-tabela"><td class="ajustando_cor_footer" style="border: 1px solid;">9FBRD4KB7RZB47674</td></div>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">50000 Km</td>
-        <td class="ajustando_cor_footer"style="font-weight: bold;">90%</td>
-        <td class="ajustando_cor_footer"style="font-weight: bold;">on</td>
-        <td class="ajustando_cor_footer"style="font-weight: bold;">-12.2222</td>
-        <td class="ajustando_cor_footer"style="font-weight: bold;">-35.2314</td>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.id }}</td>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.odometro }}</td>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.nivelCombustivel }}</td>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.status }}</td>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.lat }}</td>
+        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.long }}</td>
       </tr>
-      <tr>
-        <td class="footer-ajuste2"></td>
-        <td class="footer-ajuste2"></td>
-        <td class="footer-ajuste2"></td>
-        <td class="footer-ajuste2"></td>
-        <td class="footer-ajuste2"></td>
-        <td class="footer-ajuste2"></td>
-        
-      </tr>
-      
-    </table>
-  </footer>
+    </tbody>
+  </table>
+</footer>

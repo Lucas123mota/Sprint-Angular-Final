@@ -1,6 +1,11 @@
 export interface Veiculos extends Array<Veiculo> {}
 
 export interface Veiculo{
+long: any
+lat: any
+status: any
+nivelCombustivel: any
+odometro: any
   id: number | string
   vehicle: string
   volumetotal: number | string
