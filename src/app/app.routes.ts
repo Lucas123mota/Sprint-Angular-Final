@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'carrosel', component: CarouselComponent }
+  { path: 'carrosel', component: CarouselComponent } 
 ];
 
 @NgModule({

@@ -11,8 +11,8 @@
         <img src="ford.png" alt="" class="img-ford-ajuste">
       </strong>
     </div>
-    <a routerLink="/dashboard" class="menu-item" style="color: rgb(12,68,134);">Dashboard</a>
-    <a routerLink="/home" class="menu-item" style="color: rgb(12,68,134);">Home</a>
+    <a routerLink="/dashboard" href="/dashboard" class="menu-item" style="color: rgb(12,68,134);">Dasboard</a>
+    <a routerLink="/home" href="/home" class="menu-item" style="color: rgb(12,68,134);">Home</a>
   </div>
 
   <h1 class="dashboard-title" style="color: rgb(12,68,134);">Dashboard FORD</h1>
@@ -63,7 +63,7 @@
   <table>
     <thead>
       <tr>
-        <th class="footer-ajuste">Código - VIN</th>
+        <th class="footer-ajuste"></th>
         <th class="footer-ajuste">Odômetro</th>
         <th class="footer-ajuste">Nível de Combustível</th>
         <th class="footer-ajuste">Status</th>
@@ -78,16 +78,17 @@
                  placeholder="Digite o código VIN"
                  [(ngModel)]="vinDigitado"
                  (keyup.enter)="buscarVeiculoPorVIN()"
-                 style="width: 100%; padding: 8px; border-radius: 5px;">
+                 style="width: 11%; padding: 8px; border-radius: 5px; display: flex; justify-content: left;">
         </td>
       </tr>
       <tr>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.id }}</td>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.odometro }}</td>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.nivelCombustivel }}</td>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.status }}</td>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.lat }}</td>
-        <td class="ajustando_cor_footer" style="font-weight: bold;">{{ selectedVehicle.long }}</td>
+        
+        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.id }}</td>
+        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.odometro }}</td>
+        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.nivelCombustivel }}</td>
+        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.status }}</td>
+        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.lat }}</td>
+        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.long }}</td>
       </tr>
     </tbody>
   </table>

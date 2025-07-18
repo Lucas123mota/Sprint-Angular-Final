@@ -1,20 +1,10 @@
-  
-    <header>
-      <button class="hamburger-btn" (click)="toggleSidebar()">
-        ☰
-      </button>
-    
-      <div #sidebarOverlay class="sidebar-overlay" (click)="closeSidebar()"></div>
-    
-      <div #sidebar class="sidebar">
-        <div class="px-3 py-3 border-bottom">
-          <strong class="text-dark"><img src="ford.png" alt=""  class="img-ford-ajuste"></strong> 
-        </div>
-        <a routerLink="/dashboard" href="/dashboard" class="menu-item" style="color: rgb(12,68,134);">Dasboard</a>
-        <a routerLink="/home" href="/home" class="menu-item" style="color: rgb(12,68,134);">Home</a>
-      </div>
-  
-    </header>
+<header>
+  <div class="sidebar">
+    <a href=""><span class="icon"><img src="casa.png"></span><span class="text">Início</span></a>
+    <a href="#"><span class="icon"><img src="dashboard.png"></span><span class="text">Dashboard</span></a>
+    <a href="#"><span class="icon">⚙️</span><span class="text">Configurações</span></a>
+  </div>
+</header>
     
 
 
@@ -33,5 +23,20 @@
       <hr>
       <section class="divSection" style="margin: 10px;">Seja bem-vindo(a)!</section>
     </div>
-
   </main>
+
+
+  <footer>
+    <nav id="social">
+        <ul>
+            <li class="ajuste-li"><span>Nossas Redes Sociais!</span></li>
+            <li class="ajuste-li"><a href="https://www.facebookcom/FordBrasil/?locale=pt_BR" title="Facebook" ><img src="facebook-icon-black-seeklogo.png"></a></li>
+            <li class="ajuste-li"><a href="https://www.instagram.com/fordbrasil/" title="Instagram" ><img src="instagram-logo.png"></a></li>
+            <li class="ajuste-li"><a href="https://www.youtube.com/fordbrasil" title="YouTube" ><img src="youtube-123.png"></a></li>
+        </ul>
+    </nav>
+            <div>
+              <img src="ford.png"/>
+           </div>
+            
+</footer>

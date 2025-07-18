@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Veiculo, VeiculoModel, VeiculoData } from '../models/VeiculoModel';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Veiculo, VeiculoData, VeiculosAPI } from '../../models/veiculo.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
+  standalone: true,
   imports: [
     ReactiveFormsModule,
+    CommonModule,
     FormsModule,
   ]
 })
 export class DashboardComponent implements OnInit {
   vehicles: Veiculo[] = [];
-  selectedVehicle: Veiculo & Partial<VeiculoData> = {} as any;
+  selectedVehicle: Veiculo & Partial<VeiculoData> = {} as Veiculo & Partial<VeiculoData>;
   vinDigitado: string = '';
   selectCarForms!: FormGroup;
 
@@ -28,22 +30,31 @@ export class DashboardComponent implements OnInit {
 
     this.carregarVeiculos();
 
-    // Quando o usuário muda o select
     this.selectCarForms.get('carId')?.valueChanges.subscribe((idSelecionado) => {
-      const veiculo = this.vehicles.find(v => v.id == idSelecionado);
+      const veiculo = this.vehicles.find(v => v.id === +idSelecionado);
       if (veiculo) {
-        this.selectedVehicle = veiculo;
+        this.selectedVehicle = {
+          ...veiculo,
+          id: Number(veiculo.id)
+        };
       }
     });
   }
 
   carregarVeiculos(): void {
-    this.http.get<{ vehicles: VeiculoModel }>('http://localhost:3001/vehicles')
+    this.http.get<VeiculosAPI>('http://localhost:3001/vehicles')
       .subscribe({
         next: (res) => {
+          console.log('Veículos recebidos:', res); 
           this.vehicles = res.vehicles;
-          this.selectedVehicle = this.vehicles[0];
-          this.selectCarForms.patchValue({ carId: this.vehicles[0].id });
+
+          if (this.vehicles.length > 0) {
+            this.selectedVehicle = {
+              ...this.vehicles[0],
+              id: Number(this.vehicles[0].id)
+            };
+            this.selectCarForms.patchValue({ carId: this.vehicles[0].id });
+          }
         },
         error: (err) => {
           console.error('Erro ao carregar veículos:', err);
@@ -59,10 +70,7 @@ export class DashboardComponent implements OnInit {
     this.http.post<VeiculoData>('http://localhost:3001/vehicleData', { vin })
       .subscribe({
         next: (data) => {
-          this.selectedVehicle = {
-            ...this.selectedVehicle,
-            ...data
-          };
+          Object.assign(this.selectedVehicle, data);
         },
         error: (err) => {
           console.error('Erro ao buscar VIN:', err);
@@ -84,4 +92,6 @@ export class DashboardComponent implements OnInit {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
   }
+
+
 }
