@@ -28,9 +28,10 @@ body, html {
   padding: 40px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   width: 100%;
-  max-width: 350px;
+  max-width: 450px;
   color: white;
   text-align: center;
+  height: 37%;
 }
 
 

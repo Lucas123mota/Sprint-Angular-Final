@@ -5,8 +5,8 @@
   <ul>
    <a routerLink="/home"   href="/home" style="color: black; font-weight: bold; text-decoration: none;">Home</a>
     <a routerLink="/dashboard"  href="/dashboard" style="color: black; font-weight: bold; text-decoration: none;">Dashboard</a>
-    <a routerLink="/sidebar"  href="/sidebar" style="color: black; font-weight: bold; text-decoration: none;">Feedback</a>
-     <a routerLink="/contato"  href="/contato" style="color: black; font-weight: bold; text-decoration: none;">Contate-nos</a>
+    <a routerLink="/sidebar"  href="/sidebar" style="color: black; font-weight: bold; text-decoration: none;">Contato</a>
+    
   
   </ul>
 </div>
@@ -17,31 +17,36 @@
 
 
 <main>
-  <div class="feedback-container">
-    <h2>O que você achou?</h2>
+  <main>
+  
+    <div class="feedback-container" *ngIf="!showThankYou">
+      <h3>Fale Conosco!</h3>
+  
+      <textarea [(ngModel)]="feedbackMessage" placeholder="Nome"></textarea>
+      <textarea [(ngModel)]="feedbackMessage" placeholder="Sobrenome"></textarea>
+      <textarea [(ngModel)]="feedbackMessage" placeholder="E-mail"></textarea> 
+      <textarea [(ngModel)]="feedbackMessage" placeholder="Telefone"></textarea>
 
-    <div class="emojis">
-      <span class="emoji">😡</span>
-      <span class="emoji">😐</span>
-      <span class="emoji">😊</span>
-      <span class="emoji">😁</span>
-      <span class="emoji">😍</span>
+      <select class="option-ajuste">
+        <option>Como você deseja ser contatado?</option>
+        <option></option>
+      </select>
+  
+      <button (click)="submitFeedback()">Enviar Feedback</button>
     </div>
+  
+   
+    <div *ngIf="showThankYou" class="popup">
+      <div class="popup-content">
+        <div class="popup-icon">🎉</div>
+        <h2>Obrigado!</h2>
+        <p>Seu feedback nos ajuda a melhorar!</p>
+        <button (click)="closePopup()">Fechar</button>
+      </div>
+    </div>
+  </main>
+  
 
-    <textarea id="feedback-text" placeholder="Share your thoughts..."></textarea>
-
-    <button class="submit-btn" id="submit-btn">Enviar Feedback!</button>
-
-   <div class="thank-you-modal" *ngIf="showThankYou">
-  <div class="thank-you-content">
-    <div class="icon">✅</div>
-    <h3>Obrigado(a)! 🎉</h3>
-    <p>Agradecemos pelo Feedback</p>
-    <button class="close-btn" (click)="closeThankYou()">Close</button>
-  </div>
-</div>
-
-  </div>
 </main>
 
 
@@ -70,6 +75,14 @@
     </ul>
   </div>
 
+
+  <div class="footer-column">
+    <h3 class="footer-title">Curiosidade</h3>
+    <hr class="footer-underline" />
+    <ul class="footer-links">
+      <li>Henry Ford também é conhecido por suas frases inspiradoras, como <br> "Se você pensa que pode ou se pensa que não pode, de qualquer forma  você está certo".</li>
+    </ul>
+  </div>
 
 
   

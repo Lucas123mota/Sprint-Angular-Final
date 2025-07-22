@@ -1,3 +1,23 @@
+
+<header>
+
+  <div class="navbar">
+    <ul>
+     <a routerLink="/home"   href="/home" style="color: black; font-weight: bold; text-decoration: none;">Home</a>
+      <a routerLink="/dashboard"  href="/dashboard" style="color: black; font-weight: bold; text-decoration: none;">Dashboard</a>
+      <a routerLink="/sidebar"  href="/sidebar" style="color: black; font-weight: bold; text-decoration: none;">Feedback</a>
+       <a routerLink="/contato"  href="/contato" style="color: black; font-weight: bold; text-decoration: none;">Contate-nos</a>
+    
+    </ul>
+  </div>
+  
+  </header>
+
+
+
+
+
+
 <div class="contact-wrapper">
   <div class="contact-container">
     <h2>Contact Us</h2>
@@ -5,7 +25,7 @@
       <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required />
       <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
       <textarea placeholder="Message" [(ngModel)]="message" name="message" required></textarea>
-      <button type="submit">Send Message</button>
+      <button type="submit">Enviar</button>
     </form>
   </div>
 </div>

@@ -38,7 +38,7 @@ body {
 
  .footer-container {
   width: 100%;
-  background-color: rgb(0, 0, 92);
+  background-color: #1A3375;
   color: #f1f1f1;
   display: flex;
   justify-content: space-around;
@@ -256,20 +256,13 @@ body {
 
 
 
-header{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  position: absolute;
-}
+
 
 
 
 .navbar {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.1);

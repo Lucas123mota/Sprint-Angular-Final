@@ -9,12 +9,12 @@ import { ContactComponent } from './componentes/contato/contato.component';
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'sidebar', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'sidebar', component: SidebarComponent },
-  { path: '', redirectTo: 'contact' }
+  { path: 'contato', component: ContactComponent },
 ];
 
 @NgModule({
