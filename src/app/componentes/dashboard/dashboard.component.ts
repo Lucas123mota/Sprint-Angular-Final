@@ -94,4 +94,17 @@ export class DashboardComponent implements OnInit {
   }
 
 
+
+  get backgroundStyle() {
+  return {
+    'background-image': this.selectedVehicle?.img
+      ? `url(${this.selectedVehicle.img})`
+      : 'none',
+    'background-size': 'cover',
+    'background-position': 'center',
+    'transition': 'background-image 0.3s ease-in-out'
+  };
+}
+
+
 }

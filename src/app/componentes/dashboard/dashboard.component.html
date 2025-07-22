@@ -1,32 +1,25 @@
 <header>
-  <button class="hamburger-btn" (click)="toggleSidebar()" style="color: rgb(12,68,134);">
-    ☰
-  </button>
 
-  <div #sidebarOverlay class="sidebar-overlay" (click)="closeSidebar()"></div>
+<div class="navbar">
+  <ul>
+   <a routerLink="/home"   href="/home" style="color: black; font-weight: bold; text-decoration: none;">Home</a>
+    <a routerLink="/dashboard"  href="/dashboard" style="color: black; font-weight: bold; text-decoration: none;">Dashboard</a>
+    <a routerLink="/sidebar"  href="/sidebar" style="color: black; font-weight: bold; text-decoration: none;">Feedback</a>
+     <a routerLink="/contato"  href="/contato" style="color: black; font-weight: bold; text-decoration: none;">Contate-nos</a>
+  
+  </ul>
+</div>
 
-  <div #sidebar class="sidebar">
-    <div class="px-3 py-3 border-bottom">
-      <strong class="text-dark">
-        <img src="ford.png" alt="" class="img-ford-ajuste">
-      </strong>
-    </div>
-    <a routerLink="/dashboard" href="/dashboard" class="menu-item" style="color: rgb(12,68,134);">Dasboard</a>
-    <a routerLink="/home" href="/home" class="menu-item" style="color: rgb(12,68,134);">Home</a>
-  </div>
-
-  <h1 class="dashboard-title" style="color: rgb(12,68,134);">Dashboard FORD</h1>
 </header>
 
-<hr>
 
-<main>
+<main [ngStyle]="backgroundStyle">
   <div class="dashboard-main">
     <div id="veiculo" class="caixa-dashboard">
       <h3>Veículo</h3>
       <hr>
       <form [formGroup]="selectCarForms">
-        <select formControlName="carId" style="width: 100%; padding: 8px; border-radius: 5px;">
+        <select formControlName="carId" style="width: 100%; padding: 8px; border-radius: 5px; color: black; font-weight: bold;">
           <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
             {{ vehicle.vehicle }}
           </option>
@@ -37,59 +30,54 @@
     <div id="vendas" class="caixa-dashboard">
       <h3 style="font-size: 13px;">Total de vendas</h3>
       <hr>
-      <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.volumetotal }}</h2>
+      <h2 style="color: rgb(0, 0, 92);">{{ selectedVehicle.volumetotal }}</h2>
       <h5>{{ selectedVehicle.volumetotal }} unid.</h5>
     </div>
 
     <div id="conectados" class="caixa-dashboard">
       <h3>Conectados</h3>
       <hr>
-      <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.connected }}</h2>
+      <h2 style="color: rgb(0, 0, 92);">{{ selectedVehicle.connected }}</h2>
       <h5>{{ selectedVehicle.connected }} unid.</h5>
     </div>
 
     <div id="updates" class="caixa-dashboard">
       <h3 style="font-size: 11px;">Update de software</h3>
       <hr>
-      <h2 style="color: rgb(42, 42, 231);">{{ selectedVehicle.softwareUpdates }}</h2>
+      <h2 style="color: rgb(0, 0, 92);">{{ selectedVehicle.softwareUpdates }}</h2>
       <h5>{{ selectedVehicle.softwareUpdates }} unid.</h5>
     </div>
   </div>
 
-  <img [src]="selectedVehicle.img" alt="Imagem do veículo" style="width: 50%;">
 </main>
 
-<footer>
-  <table>
-    <thead>
-      <tr>
-        <th class="footer-ajuste"></th>
-        <th class="footer-ajuste">Odômetro</th>
-        <th class="footer-ajuste">Nível de Combustível</th>
-        <th class="footer-ajuste">Status</th>
-        <th class="footer-ajuste">Lat.</th>
-        <th class="footer-ajuste">Long.</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="6">
-          <input type="text"
-                 placeholder="Digite o código VIN"
-                 [(ngModel)]="vinDigitado"
-                 (keyup.enter)="buscarVeiculoPorVIN()"
-                 style="width: 11%; padding: 8px; border-radius: 5px; display: flex; justify-content: left;">
-        </td>
-      </tr>
-      <tr>
-        
-        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.id }}</td>
-        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.odometro }}</td>
-        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.nivelCombustivel }}</td>
-        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.status }}</td>
-        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.lat }}</td>
-        <td class="footer-ajuste2" style="font-weight: bold;">{{ selectedVehicle.long }}</td>
-      </tr>
-    </tbody>
-  </table>
+<footer class="footer-container"> 
+  <div class="footer-column">
+    <h3 class="footer-title">Siga-nos Nas Nossas Redes Sociais</h3>
+    <hr class="footer-underline" />
+    <p class="footer-text">Pensar é o trabalho mais difícil que existe.<br>Talvez por isso tão poucos se dediquem a ele.</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/FordBrasil/?locale=pt_BR"><img src="facebook-icon-black-seeklogo.png" alt="Facebook" /></a>
+      <a href="https://www.instagram.com/fordbrasil/"><img src="instagram-logo.png" alt="Instagram" /></a>
+      <a href="https://www.youtube.com/fordbrasil"><img src="yt-img.png" alt="youtube" /></a>
+      <a href="https://www.linkedin.com/company/ford-brasil/"><img src="linkedin.png" alt="Linkedin" /></a>
+    </div>
+  </div>
+
+  <div class="footer-column">
+    <h3 class="footer-title">Contato</h3>
+    <hr class="footer-underline" />
+    <ul class="footer-links">
+<p class="footer-text"><i class="fas fa-phone footer-icon"></i>0800 703 3673</p>
+    <p class="footer-text"><i class="fas fa-envelope footer-icon"></i>Central&#64;Ford.com</p>
+    </ul>
+  </div>
+
+  
+  <div class="footer-bottom">
+    © 2023 Ford Brasil. Todos os direitos reservados. 
+    <div>
+      <img   class="footer-logo" src="ford.png" alt="Ford Logo" />
+    </div>
+  </div>
 </footer>

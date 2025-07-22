@@ -4,12 +4,11 @@
     margin: 0%;
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 90vh;
+main {
+  width: 100%;
+  height: 100vh; 
+  margin: 0;
+  padding: 0;
 }
 
 main img{
@@ -17,121 +16,302 @@ main img{
 }
 
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.popUp{
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    z-index: 2;
-    background-color: white;
-    opacity: 0.9;
-    border-radius: 5px;
-    border: 1px solid;
-}
-
 .divSection{
     color: rgb(43, 118, 216);
 }
 
 
-nav#social {
-   width: 80%;
-}
-
-nav#social ul img {
-    width: 30px; 
-    display: flex;
-    justify-content: space-between;
-}
 
 
-
-footer {
-    width: 100vw;
-    height: 100px;
-    background-color: #1B357E;
-    display: flex;
-    color: white;
-}
-
-footer li{
-display: flex;
-}
+/* footer css*/
 
 
-footer img{
-  width: 110px;
-  margin-right: 5px;
-}
-
-
-.ajuste-li{
-display: flex;
-justify-content: left;
-align-items: left;
-}
-
-footer ul{
+.footer-container {
+  width: 100%;
+  background-color: rgb(0, 0, 92);
+  color: #f1f1f1;
   display: flex;
+  justify-content: space-around;
+  padding: 40px 10px;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  border-top: 3px solid black;
 }
 
-
-/*  css sidebar */
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 60px;
-  background-color: rgb(12,68,134);
-  overflow-x: hidden;
-  transition: width 0.3s ease;
-  padding-top: 20px;
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+  color: #BDC6D3;
 }
 
-.sidebar:hover {
-  width: 200px;
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.sidebar a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  margin: 8px 10px;
-  color: white;
+.footer-underline {
+  width: 40px;
+  height: 3px;
+  background-color: #D9A15C;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 8px 0;
+}
+
+.footer-links a {
+  color: #f1f1f1;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  background-color: rgba(255, 255, 255, 0.05); 
+  transition: color 0.2s ease;
 }
 
-.sidebar a:hover {
-  background-color: rgba(255, 255, 255, 0.15); 
-  transform: scale(1.02);
+.footer-links a:hover {
+  color: #D9A15C;
 }
 
-.icon img{
-  width: 20px;
+.social-icons {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  background-color: rgb(42, 42, 231);
+  padding: 8px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.footer-icon {
+  width: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+
+
+.footer-bottom {
+  width: 100%;
   text-align: center;
-  font-size: 18px;
+  padding-top: 37px;
+  font-size: 13px;
+  color: #f1f1f1;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 30px;
 }
 
-.text {
+/*  slide css */
+
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0; 
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
+  animation: slideShow 25s infinite;
+  transition: opacity 1s ease-in-out;
 }
 
-.sidebar:hover .text {
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  color: white;
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(30px);
+  z-index: 1;
+}
+
+
+@keyframes slideShow {
+  0%   { opacity: 0; }
+  4%   { opacity: 1; }
+  21%  { opacity: 1; }
+  25%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+@keyframes captionIn {
+  0%   { opacity: 0; transform: translateY(30px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  20%  { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes captionOut {
+  20%  { opacity: 1; transform: translateY(0); }
+  25%  { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 0; transform: translateY(30px); }
+}
+
+
+.slide-1 {
+  animation-delay: 0s;
+}
+.slide-2 {
+  animation-delay: 6.25s;
+}
+.slide-3 {
+  animation-delay: 12.5s;
+}
+.slide-4 {
+  animation-delay: 18.75s;
+}
+
+
+.slide-1 .caption {
+  animation: captionIn 25s infinite, captionOut 25s infinite;
+  animation-delay: 0s, 0s;
+}
+.slide-2 .caption {
+  animation: captionIn 25s infinite, captionOut 25s infinite;
+  animation-delay: 6.25s, 6.25s;
+}
+.slide-3 .caption {
+  animation: captionIn 25s infinite, captionOut 25s infinite;
+  animation-delay: 12.5s, 12.5s;
+}
+.slide-4 .caption {
+  animation: captionIn 25s infinite, captionOut 25s infinite;
+  animation-delay: 18.75s, 18.75s;
+}
+
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.slide-visible::before {
   opacity: 1;
 }
+
+
+.slide-1::before {
+  animation: overlayFade 25s infinite;
+  animation-delay: 0s;
+}
+
+.slide-2::before {
+  animation: overlayFade 25s infinite;
+  animation-delay: 6.25s;
+}
+
+.slide-3::before {
+  animation: overlayFade 25s infinite;
+  animation-delay: 12.5s;
+}
+
+.slide-4::before {
+  animation: overlayFade 25s infinite;
+  animation-delay: 18.75s;
+}
+
+@keyframes overlayFade {
+  0%   { opacity: 1; }
+  4%   { opacity: 0; }
+  21%  { opacity: 0; }
+  25%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+
+
+/* css navegação */
+
+
+.navbar {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  z-index: 10; 
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+
+
+.footer-logo{
+  width: 100px;
+  height: 45px;
+  align-items: right;
+  justify-content: right;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 

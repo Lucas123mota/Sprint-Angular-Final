@@ -5,7 +5,7 @@ const cors = require("cors")
 const app = express();
 
 app.use(cors());
-// app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname)));
@@ -50,7 +50,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 145760,
                 connected: 70000,
                 softwareUpdates: 27550,
-                img: "http://localhost:3001/img/ranger.png"
+                img: "http://localhost:3001/img/ranger-raptor-2019.png"
             },
             {
                 id: 2,
@@ -58,7 +58,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:3001/img/mustang.png"
+                img: "http://localhost:3001/img/mustang-img2.png"
             },
             {
                 id: 3,
@@ -66,15 +66,15 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 4560,
                 connected: 4000,
                 softwareUpdates: 3050,
-                img: "http://localhost:3001/img/territory.png"
+                img: "http://localhost:3001/img/territory-ofc.png"
             },
             {
                 id: 4,
-                vehicle: "Bronco Sport",
+                vehicle: "Bronco",
                 volumetotal: 7560,
                 connected: 4060,
                 softwareUpdates: 2050,
-                img: "http://localhost:3001/img/broncoSport.png"
+                img: "http://localhost:3001/img/bronco-img2.png"
             }
         ];
 
