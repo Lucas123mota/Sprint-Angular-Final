@@ -16,22 +16,24 @@
 
 
 
-<main>
+
   <main>
   
     <div class="feedback-container" *ngIf="!showThankYou">
-      <h3>Fale Conosco!</h3>
+      <h3 style="color: rgb(146, 146, 146);">Fale Conosco!</h3>
   
-      <textarea [(ngModel)]="feedbackMessage" placeholder="Nome"></textarea>
-      <textarea [(ngModel)]="feedbackMessage" placeholder="Sobrenome"></textarea>
-      <textarea [(ngModel)]="feedbackMessage" placeholder="E-mail"></textarea> 
-      <textarea [(ngModel)]="feedbackMessage" placeholder="Telefone"></textarea>
+      <input type="email" placeholder="Nome" required />
+      <input type="text" placeholder="Sobrenome" name="sobrenome" required pattern="[A-Za-zÀ-ÿ\s]+" title="Somente letras são permitidas" />
+      <input type="tel"  placeholder="Telefone" name="telefone" required pattern="[0-9]{10,11}" title="Digite um número com 10 ou 11 dígitos" />
+      <input type="email" placeholder="E-mail" required />
+      
 
       <select class="option-ajuste">
         <option>Como você deseja ser contatado?</option>
-        <option></option>
+        <option>E-mail</option>
+        <option>Telefone</option>
       </select>
-  
+    <h6><p style="color: white; font-size: 14px;">Declaro que li e concordo com os Termos de Uso e a Política de Privacidade.<a href="https://www.ford.com.br/politica-de-privacidade/#">  Termos de uso.</a></p></h6>
       <button (click)="submitFeedback()">Enviar Feedback</button>
     </div>
   
@@ -47,7 +49,7 @@
   </main>
   
 
-</main>
+
 
 
 
@@ -77,10 +79,10 @@
 
 
   <div class="footer-column">
-    <h3 class="footer-title">Curiosidade</h3>
+    <h3 class="footer-title">Sobre</h3>
     <hr class="footer-underline" />
     <ul class="footer-links">
-      <li>Henry Ford também é conhecido por suas frases inspiradoras, como <br> "Se você pensa que pode ou se pensa que não pode, de qualquer forma  você está certo".</li>
+      <a href="https://www.ford.com.br/politica-de-privacidade/">Política de Privacidade</a>
     </ul>
   </div>
 

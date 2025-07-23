@@ -2,16 +2,15 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: url('https://images8.alphacoders.com/411/411302.jpg') no-repeat center center fixed;
+  height: 120vh;
+  background: url('https://images5.alphacoders.com/400/thumb-1920-400487.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 .feedback-container {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
-  color: #fff;
   padding: 20px;
   border-radius: 15px;
   width: 390px;
@@ -19,6 +18,7 @@ main {
   position: relative;
   box-shadow: 0 8px 32px rgba(102, 99, 99, 0.5);
   border: 1px solid rgba(255,255,255,0.2);
+  margin-top: 10px;
 }
 
 .feedback-container h3 {
@@ -34,7 +34,7 @@ main {
   border-radius: 10px;
   padding: 10px;
   resize: none;
-  background: rgba(189, 189, 189, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(248, 248, 248, 0.2);
@@ -44,7 +44,7 @@ main {
 
 
 
-textarea {
+input {
   width: 100%;
   height: 60px;
   margin: 15px 0;
@@ -52,11 +52,10 @@ textarea {
   border-radius: 10px;
   padding: 10px;
   resize: none;
-  background: rgba(189, 189, 189, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(248, 248, 248, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -111,7 +110,7 @@ button:hover {
 
 .navbar {
   position: absolute;
-  top: 30px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.1);
@@ -153,7 +152,7 @@ button:hover {
   height: 45px;
   align-items: right;
   justify-content: right;
-  margin-top: 10px;
+  margin-top: 17px;
 
 }
 
