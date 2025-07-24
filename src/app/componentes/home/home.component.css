@@ -307,6 +307,97 @@ main img{
 
 
 
+@media (max-width: 450px) {
+
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+
+.navbar:hover ul li a:not(:hover) {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+
+
+
+
+
+
+  
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    text-align: center;
+  }
+
+  .footer-column {
+    min-width: 100%;
+  }
+
+  .footer-logo {
+    margin: 0 auto;
+  }
+
+
+ .footer-container {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin: 15px 0;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-logo {
+    width: 80px;
+    margin-top: 10px;
+  }
+
+.footer-underline {
+  width: 60px;
+  border: 2px solid #ffffff;
+  margin: 0 auto 15px auto; 
+}
+
+
+  
+
+
+}
 
 
 

@@ -1,53 +1,120 @@
 
-<header>
 
-<div class="navbar">
+<header>
+ <div class="navbar">
   <ul>
-   <a routerLink="/home"   href="/home" style="color: black; font-weight: bold; text-decoration: none;">Home</a>
-    <a routerLink="/dashboard"  href="/dashboard" style="color: black; font-weight: bold; text-decoration: none;">Dashboard</a>
-    <a routerLink="/sidebar"  href="/sidebar" style="color: black; font-weight: bold; text-decoration: none;">Contato</a>
-    
+   <a routerLink="/home"   href="/home" style="color: white; font-weight: bold; text-decoration: none;">Home</a>
+    <a routerLink="/dashboard"  href="/dashboard" style="color: white; font-weight: bold; text-decoration: none;">Dashboard</a>
+    <a routerLink="/sidebar"  href="/sidebar" style="color: white; font-weight: bold; text-decoration: none;">Contato</a>
+     
   
   </ul>
-</div>
 
+</div>
 </header>
 
 
 
 
 
-  <main>
-  
-    <div class="feedback-container" *ngIf="!showThankYou">
-      <h3 style="color: rgb(146, 146, 146);">Fale Conosco!</h3>
-  
-      <input type="email" placeholder="Nome" required />
-      <input type="text" placeholder="Sobrenome" name="sobrenome" required pattern="[A-Za-zÀ-ÿ\s]+" title="Somente letras são permitidas" />
-      <input type="tel"  placeholder="Telefone" name="telefone" required pattern="[0-9]{10,11}" title="Digite um número com 10 ou 11 dígitos" />
-      <input type="email" placeholder="E-mail" required />
-      
 
-      <select class="option-ajuste">
-        <option>Como você deseja ser contatado?</option>
-        <option>E-mail</option>
-        <option>Telefone</option>
-      </select>
-    <h6><p style="color: white; font-size: 14px;">Declaro que li e concordo com os Termos de Uso e a Política de Privacidade.<a href="https://www.ford.com.br/politica-de-privacidade/#">  Termos de uso.</a></p></h6>
-      <button (click)="submitFeedback()">Enviar Feedback</button>
+
+
+
+<main>
+  <div class="feedback-container" *ngIf="!showThankYou">
+    <h3 style="color: white;">Fale Conosco!</h3>
+
+    <form #feedbackForm="ngForm" (ngSubmit)="submitFeedback()">
+  <input
+    type="text"
+    placeholder="Digite seu nome"
+    name="nome"
+    [(ngModel)]="nome"
+    required
+    class="input-custom"
+  />
+
+  <input
+    type="text"
+    placeholder="Digite seu Sobrenome"
+    name="sobrenome"
+    [(ngModel)]="sobrenome"
+    required
+    pattern="[A-Za-zÀ-ÿ\s]+"
+    title="Somente letras são permitidas"
+  />
+
+  <input
+    type="tel"
+    placeholder="Telefone"
+    name="telefone"
+    [(ngModel)]="telefone"
+    required
+    pattern="[0-9]{10,11}"
+    title="Digite um número com 10 ou 11 dígitos"
+  />
+
+  <input
+    type="email"
+    placeholder="E-mail"
+    name="email"
+    [(ngModel)]="email"
+    required
+  />
+
+  <select
+    class="option-ajuste"
+    name="contato"
+    [(ngModel)]="contato"
+    required
+  >
+    <option value="" disabled selected hidden style="color: rgb(83, 83, 83);">
+      Como você deseja ser contatado?
+    </option>
+    <option>E-mail</option>
+    <option>Telefone</option>
+  </select>
+
+<label style="display: flex; align-items: center; margin-top: 10px; font-size: 14px; color: white;">
+  <input
+    type="checkbox"
+    [(ngModel)]="aceitouTermos"
+    name="aceitouTermos"
+    required
+    style="width: 18px; height: 18px; margin-right: 8px;"
+  />
+  <span style="margin-bottom: 10px;">
+    Declaro que li e concordo com os 
+    <a href="https://www.ford.com.br/politica-de-privacidade/#" target="_blank" style="color: #0e00d3; text-decoration: underline;">
+      Termos de Uso.
+    </a>
+  </span>
+</label>
+
+
+  <button type="submit" [disabled]="feedbackForm.invalid || !aceitouTermos">
+    Enviar Feedback
+  </button>
+</form>
+
+  </div>
+
+  <div *ngIf="showThankYou" class="popup">
+    <div class="popup-content">
+      <div class="popup-icon">🎉</div>
+      <h2>Obrigado!</h2>
+      <p>Seu feedback nos ajuda a melhorar!</p>
+      <button (click)="closePopup()">Fechar</button>
     </div>
-  
-   
-    <div *ngIf="showThankYou" class="popup">
-      <div class="popup-content">
-        <div class="popup-icon">🎉</div>
-        <h2>Obrigado!</h2>
-        <p>Seu feedback nos ajuda a melhorar!</p>
-        <button (click)="closePopup()">Fechar</button>
-      </div>
-    </div>
-  </main>
-  
+  </div>
+</main>
+
+
+
+
+
+
 
 
 
@@ -61,10 +128,21 @@
     <hr class="footer-underline" />
     <p class="footer-text">Pensar é o trabalho mais difícil que existe.<br>Talvez por isso tão poucos se dediquem a ele.</p>
     <div class="social-icons">
-      <a href="https://www.facebook.com/FordBrasil/?locale=pt_BR"><img src="facebook-icon-black-seeklogo.png" alt="Facebook" /></a>
-      <a href="https://www.instagram.com/fordbrasil/"><img src="instagram-logo.png" alt="Instagram" /></a>
-      <a href="https://www.youtube.com/fordbrasil"><img src="yt-img.png" alt="youtube" /></a>
-      <a href="https://www.linkedin.com/company/ford-brasil/"><img src="linkedin.png" alt="Linkedin" /></a>
+<a href="https://www.facebook.com/FordBrasil/?locale=pt_BR" target="_blank" rel="noopener noreferrer">
+  <img src="facebook-icon-black-seeklogo.png" alt="Facebook" />
+</a>
+
+<a href="https://www.instagram.com/fordbrasil/" target="_blank" rel="noopener noreferrer">
+  <img src="instagram-logo.png" alt="Instagram" />
+</a>
+
+<a href="https://www.youtube.com/fordbrasil" target="_blank" rel="noopener noreferrer">
+  <img src="yt-img.png" alt="YouTube" />
+</a>
+
+<a href="https://www.linkedin.com/company/ford-brasil/" target="_blank" rel="noopener noreferrer">
+  <img src="linkedin.png" alt="LinkedIn" />
+</a>
     </div>
   </div>
 
@@ -82,7 +160,7 @@
     <h3 class="footer-title">Sobre</h3>
     <hr class="footer-underline" />
     <ul class="footer-links">
-      <a href="https://www.ford.com.br/politica-de-privacidade/">Política de Privacidade</a>
+      <a href="https://www.ford.com.br/politica-de-privacidade/" target="_blank">Política de Privacidade</a>
     </ul>
   </div>
 
@@ -95,4 +173,6 @@
     </div>
   </div>
 </footer>
+
+
 

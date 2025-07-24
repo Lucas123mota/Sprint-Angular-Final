@@ -15,12 +15,28 @@ export class SidebarComponent {
   feedbackMessage: string = '';
   showThankYou: boolean = false;
 
+  nome: string = '';
+  sobrenome: string = '';
+  telefone: string = '';
+  email: string = '';
+  contato: string = '';
+  aceitouTermos: boolean = false;
+
   selectEmoji(emoji: string) {
     this.selectedEmoji = emoji;
   }
 
   submitFeedback() {
-    console.log('Feedback enviado:', this.feedbackMessage);
+    if (!this.aceitouTermos) return;
+
+    console.log('Feedback enviado:', {
+      nome: this.nome,
+      sobrenome: this.sobrenome,
+      telefone: this.telefone,
+      email: this.email,
+      contato: this.contato,
+    });
+
     this.showThankYou = true;
   }
 

@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   selectedVehicle: Veiculo & Partial<VeiculoData> = {} as Veiculo & Partial<VeiculoData>;
   vinDigitado: string = '';
   selectCarForms!: FormGroup;
+// isMenuOpen property removed to avoid duplicate declaration
 
   constructor(private http: HttpClient, private fb: FormBuilder) {}
 
@@ -105,6 +106,22 @@ export class DashboardComponent implements OnInit {
     'transition': 'background-image 0.3s ease-in-out'
   };
 }
+
+
+
+isMenuOpen: boolean = false;
+
+toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
+
+
+
+
+
+
+
 
 
 }
