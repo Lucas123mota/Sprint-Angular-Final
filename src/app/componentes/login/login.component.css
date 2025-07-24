@@ -126,3 +126,134 @@ body, html {
 
 
 
+* {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background: url('https://wallpapers.com/images/high/ford-background-horn9174t8pxpesf.webp') no-repeat center center/cover;
+}
+
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 450px;
+  color: white;
+  text-align: center;
+  height: 55%;
+}
+
+.login-logo img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: #eee;
+}
+
+.options label,
+.options a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: black;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+
+
+/* 🔻 Responsividade para telas até 450px */
+@media (max-width: 450px) {
+  .glass-container {
+    padding: 25px;
+    border-radius: 15px;
+    height: auto;
+  }
+
+  .login-logo img {
+    width: 80px;
+  }
+
+  .form-group input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .btn-login {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .eye-icon {
+    font-size: 14px;
+    right: 10px;
+  }
+}
