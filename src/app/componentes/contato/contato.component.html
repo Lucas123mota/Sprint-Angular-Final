@@ -1,31 +1,109 @@
+<main>
+ <a routerLink="/login" class="blue-button">🚀 Contato</a>
 
-<header>
 
-  <div class="navbar">
-    <ul>
-     <a routerLink="/home"   href="/home" style="color: black; font-weight: bold; text-decoration: none;">Home</a>
-      <a routerLink="/dashboard"  href="/dashboard" style="color: black; font-weight: bold; text-decoration: none;">Dashboard</a>
-      <a routerLink="/sidebar"  href="/sidebar" style="color: black; font-weight: bold; text-decoration: none;">Feedback</a>
-       <a routerLink="/contato"  href="/contato" style="color: black; font-weight: bold; text-decoration: none;">Contate-nos</a>
-    
+<button class="blue-button" (click)="sendMessage()">Entre para saber mais!</button>
+
+
+    <div class="slide slide-1">
+      <img src="mustang-vermelho.png" alt="Imagem 1">
+      <div class="caption">
+        <h2>Descubra a Natureza</h2>
+        <p>Explore a beleza do mundo ao seu redor.</p>
+        <p>
+          Com o 
+          <a href="https://www.ford.com.br/performance/mustang/" style="color: white; text-decoration: none;">
+            Mustang GT 2015
+          </a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide slide-2">
+      <img src="mustang-cinza.png" alt="Imagem 2">
+      <div class="caption">
+        <h2>Aventure-se</h2>
+        <p>Desafie seus limites todos os dias.</p>
+        <p>
+          Com o 
+          <a href="/mustang-gtd-2025" style="color: white; text-decoration: none;">
+            Ford Mustang GTD 2025
+          </a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide slide-3">
+      <img src="resized_image_1920x1080.png" alt="Imagem 3">
+      <div class="caption">
+        <h2>Inspire-se</h2>
+        <p>A natureza é o maior dos mestres.</p>
+        <p>
+          <a href="https://www.ford.com.br/picapes/ranger/" style="color: white; text-decoration: none;">
+            Com a nova Ford Ranger wildtrack.
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="slide slide-4">
+      <img src="ford-logo-cavalo.png" alt="Imagem 4">
+      <div class="caption">
+        <h2>Ford Power</h2>
+        <p>Potência que move você.</p>
+      </div>
+    </div>
+
+</main>
+
+
+
+
+
+
+
+<footer class="footer-container"> 
+  <div class="footer-column">
+    <h3 class="footer-title">Siga-nos Nas Nossas Redes Sociais</h3>
+    <hr class="footer-underline" />
+    <p class="footer-text">Pensar é o trabalho mais difícil que existe.<br>Talvez por isso tão poucos se dediquem a ele.</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/FordBrasil/?locale=pt_BR" target="_blank"><img src="facebook-icon-black-seeklogo.png" alt="Facebook" /></a>
+      <a href="https://www.instagram.com/fordbrasil/" target="_blank"><img src="instagram-logo.png" alt="Instagram" /></a>
+      <a href="https://www.youtube.com/fordbrasil" target="_blank"><img src="yt-img.png" alt="youtube" /></a>
+      <a href="https://www.linkedin.com/company/ford-brasil/" target="_blank"><img src="linkedin.png" alt="Linkedin" /></a>
+    </div>
+  </div>
+
+  <div class="footer-column">
+    <h3 class="footer-title">Contato</h3> 
+    <hr class="footer-underline" />
+    <ul class="footer-links">
+<p class="footer-text"><i class="fas fa-phone footer-icon"></i>0800 703 3673</p>
+    <p class="footer-text"><i class="fas fa-envelope footer-icon"></i>Central&#64;Ford.com</p>
     </ul>
   </div>
-  
-  </header>
 
 
-
-
-
-
-<div class="contact-wrapper">
-  <div class="contact-container">
-    <h2>Contact Us</h2>
-    <form (ngSubmit)="sendMessage()">
-      <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required />
-      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
-      <textarea placeholder="Message" [(ngModel)]="message" name="message" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
+  <div class="footer-column">
+    <h3 class="footer-title">Sobre</h3>
+    <hr class="footer-underline" />
+    <ul class="footer-links">
+      <a href="https://www.ford.com.br/politica-de-privacidade/" target="_blank">Política de Privacidade</a>
+    </ul>
   </div>
-</div>
+
+
+  
+  <div class="footer-bottom">
+    © 2023 Ford Brasil. Todos os direitos reservados. 
+    <div>
+      <img   class="footer-logo" src="ford.png" alt="Ford Logo" />
+    </div>
+  </div>
+</footer>
+
+
+
+
+
